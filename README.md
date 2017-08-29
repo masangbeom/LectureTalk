@@ -10,8 +10,8 @@
     - DataBase & Server : Firebase
 
 
-    $npm i
-    $ionic serve -l -c
+> $npm i
+> $ionic serve -l -c
 
 * * *
 #####  @Created By MaSangBeom
