@@ -1,0 +1,29 @@
+page-verification {
+  .page{
+    margin-top: 30vh;
+  }
+  h4,
+  p {
+    text-align: center;
+  }
+
+  h4 {
+    color: $primary;
+    font-size: 3.0em;
+  }
+
+  p {
+    color: $gray;
+    font-size: 1.0em;
+  }
+
+  p span {
+    color: $primary;
+    font-size: 1.0em;
+  }
+  ion-icon{
+    color: #222
+    ;
+    font-size: 4.5em;
+  }
+}

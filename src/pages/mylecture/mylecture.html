@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>My Lecture</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only tappable (click)="setLecture()"><ion-icon name="md-cart"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!-- 강의설정 안된 상태 -->
+  <div class="empty-list" *ngIf="lectures && lectures.length <= 0">
+    <h1><ion-icon name="book"></ion-icon></h1>
+    <p>강의를 등록하지 않으셨습니다.</p>
+   <!--강의설정-->
+    <button ion-button icon-left tappable (click)="setLecture()"><ion-icon name="md-cart"></ion-icon>강의 설정</button>
+  </div>
+ <!-- Show list of Lecturess -->
+  <ion-list *ngIf="lectures && lectures.length > 0">
+    <ion-list-header style="font-weight:bold; font-size:120%;">
+      나의 강의 목록
+      <p>강의 정보 및 삭제 : 왼쪽으로 스와이핑</p>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let lecture of lectures" >
+    <ion-item (click)="message(lecture.$key); $event.stopPropagation();">
+      <h1>{{lecture.className}} </h1>
+      <p> {{lecture.depart}}</p>
+      <h2>{{lecture.professorName}}</h2>
+      <p>{{lecture.time}}</p>
+      <ion-badge item-right color="danger" *ngIf="lecture.unreadMessagesCount > 0">{{lecture.unreadMessagesCount}}</ion-badge>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color= "dark" (click)="lectureInfo(lecture.$key); $event.stopPropagation();">
+        <ion-icon name="md-help" color="light"></ion-icon>강의 정보</button>
+      <button ion-button color="danger" (click)="deleteLecture(lecture.$key); $event.stopPropagation();">
+         <ion-icon name="md-trash"></ion-icon>강의 삭제</button>
+    </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  
+</ion-content>

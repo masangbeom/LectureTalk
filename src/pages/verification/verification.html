@@ -1,0 +1,21 @@
+<ion-content>
+  <div *ngIf="user" class="page">
+    <h4 class="title">계정 인증</h4>
+    <p> <span>{{user.email}}</span> 입력하신 Email에서 인증해주세요.</p>
+    <!-- Verification Menu -->
+    <ion-row style="text-align: center;">
+      <ion-col>
+        <ion-icon name="refresh" tappable (click)="sendEmailVerification()"></ion-icon>
+        <p>다시 보내기</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="mail" tappable (click)="setEmail()"></ion-icon>
+        <p>Email 변경</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="log-out" tappable (click)="logout()"></ion-icon>
+        <p>로그아웃</p>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

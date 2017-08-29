@@ -1,0 +1,43 @@
+page-lecture-info {
+    h2,
+   {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    color: #2E8B57;
+  }
+
+  p.username {
+    color: $dark;
+    text-align: center;
+    margin-bottom: -6px !important;
+    margin-top: 6px !important;
+    font-size: 115%;
+  }
+
+  p.time{
+      width: 75vw;
+      font-size: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  p.description {
+    width: 75vw;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  p {
+    color: $gray;
+  }
+  h4 span.activated,
+  p.activated {
+    opacity: 0.5;
+  }
+}

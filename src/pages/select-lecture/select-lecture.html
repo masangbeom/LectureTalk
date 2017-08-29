@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons>
+      <button ion-button icon-only tappable (click)="back()"><ion-icon name="md-arrow-round-back"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>강의 담기</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="empty-list" *ngIf="lectures && lectures.length == 0">
+    <h1>
+      <ion-icon name="md-search"></ion-icon>
+    </h1>
+    <p>등록된 강의가 없습니다.</p>
+    <p>학교 및 학과를 확인해주세요.</p>
+    <button ion-button icon-left tappable (click)="back()"><ion-icon name="md-arrow-round-back"></ion-icon>뒤로 가기</button>
+  </div>
+
+  <div class="empty-list" *ngIf="!searchLecture">
+    <h1>
+      <ion-icon name="md-search"></ion-icon>
+    </h1>
+    <p>담고 싶은 강의를 검색하세요.</p>
+    <p>강의명으로 검색하세요.</p>
+    <button ion-button icon-left tappable (click)="back()"><ion-icon name="md-arrow-round-back"></ion-icon>뒤로 가기</button>
+  </div>
+
+
+  <ion-searchbar [(ngModel)]="searchLecture" placeholder="강의명으로 검색하세요. (강의 담기 :왼쪽으로 스와이핑)"></ion-searchbar>
+  <ion-list *ngIf="lectures && lectures.length > 0 && searchLecture.length > 0" >
+    <ion-item-sliding *ngFor="let lecture of lectures | searchLectureFilter: [excludedLectures, searchLecture]" tappable>
+      <ion-item>
+        <h1>{{lecture.className}} </h1>
+        <p> {{lecture.professorName}}</p>
+        <h2>{{lecture.lectuerCode}}</h2>
+        <p>{{lecture.time}}</p>
+        <button large ion-button clear item-right (click)="lectureInfo(lecture.$key)">
+          <ion-icon color="dark" name="md-help"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="lecturetalk" (click)="acceptLectureRequest(lecture); $event.stopPropagation();">
+          <ion-icon name="md-cart"></ion-icon>강의 담기
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+

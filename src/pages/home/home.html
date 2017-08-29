@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()"><ion-icon name="md-log-out" item-right></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="user">
+    <ion-list>
+      <ion-list-header>
+        내 정보
+      </ion-list-header>
+      <ion-item no-lines>
+        <ion-avatar item-left>
+          <img src="{{user.img}}" tappable (click)="setPhoto()">
+        </ion-avatar>
+        <h2 tappable (click)="setName()">{{user.name}} </h2>
+        <p tappable (click)="setUsername()" class="username">@{{user.username}}</p>
+      </ion-item>
+      <ion-list-header>
+        전공
+      </ion-list-header>
+      <ion-item no-lines>
+        <p tappable (click)="setDescription()" class="description">{{user.description}}</p>
+      </ion-item>
+      <ion-list-header>
+        More...
+      </ion-list-header>
+      <ion-item no-lines tappable (click)="setEmail()">
+        E-mail 변경
+      </ion-item>
+      <ion-item no-lines tappable (click)="setPassword()" *ngIf="user && user.provider == 'Firebase'">
+        비밀번호 변경
+      </ion-item>
+      <ion-item no-lines tappable (click)="deleteAccount()">
+        계정 삭제
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

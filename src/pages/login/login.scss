@@ -1,0 +1,19 @@
+page-login {
+  .top{
+    text-align:center;
+    padding-top:10vh;
+  }
+  ion-list, ion-item{
+    background:transparent
+  }
+  .item-ios{
+    background: transparent;
+  }
+  ion-label{
+    font-weight:500;
+    color:$primary;
+  }
+  ion-input{
+    color:#777;
+  }
+}

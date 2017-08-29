@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons>
+      <button ion-button icon-only tappable (click)="back()"><ion-icon name="md-arrow-round-back"></ion-icon></button>
+    </ion-buttons>
+    <ion-title *ngIf="lecture">{{lecture.className}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="lecture">
+  <ion-card>
+    <ion-card-header>
+      <ion-icon large center color="dark" name="ios-bulb-outline"></ion-icon>   강의 정보
+    </ion-card-header>
+    <ion-card-content>
+    <h2>강의명 : {{lecture.className}}</h2>
+    <p class="username">담당교수 : {{lecture.professorName}} 교수님</p>
+    <p class="username">학과 : {{lecture.depart}}</p>
+    <p class="username">------------------------------------------</p>
+    <p class="time">강의 시간 : {{lecture.time}}</p>
+    <p class="description">교과목코드 : {{lecture.lectureCode}}</p>
+    <p class="description">분반 : {{lecture.classCode}}</p>
+    <p class="description">원어강의 : {{isEnglish}}</p>
+    </ion-card-content>
+  </ion-card>
+  <!-- No friends to show -->
+  
+  <div class="empty-lists" *ngIf="members == null">
+    <h3><ion-icon name="contacts"></ion-icon></h3>
+    <p>등록된 강의 멤버가 없습니다.</p>
+  </div>
+  <!-- Show list of friends -->
+  <ion-list class="avatar-list" *ngIf="members && members.length > 0">
+    <ion-list-header style="font-weight:bold; font-size:120%;">
+      강의를 수강하고 있는 사람들
+    </ion-list-header>
+    <ion-item *ngFor="let member of members">
+      <ion-avatar item-left>
+        <img src="{{member.img}}" (click)="viewUser(member.$key)"/>
+      </ion-avatar>
+      <h3>{{member.name}}</h3>
+      <p>{{member.username}}</p>
+    </ion-item>
+  </ion-list>
+  </div>
+</ion-content>

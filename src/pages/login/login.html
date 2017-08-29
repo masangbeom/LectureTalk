@@ -1,0 +1,31 @@
+<ion-content  >
+  <div class="top">
+    <img src = "assets/images/LoginLogo.png" aria-setsize="60px"style="width :90%; height :90%;"/>
+  
+  </div>
+  <ion-list inset>
+    <form [formGroup]="emailPasswordForm">
+    <ion-item no-lines>
+        <ion-label stacked style="color:black">EMAIL</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-note><button item-right ion-button color="gray" clear tappable (click)="forgotPassword()">RESET</button></ion-note>
+        <ion-label stacked style="color:black">PASSWORD</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="primary" block tappable (click)="login()" [disabled]="!emailPasswordForm.valid">로그인</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button color="dark" block tappable (click)="register()" [disabled]="!emailPasswordForm.valid">회원가입</button>
+        </ion-col>
+      </ion-row>
+      </form>
+      <!--현재 Facebook Google 로그인 안됨...-->
+      <!--<p style="text-align: center;font-size:10px;color:#444">--- 다른 방법으로 로그인 ---</p>
+      <button ion-button block icon-left color="facebook" tappable (click)="loginProvider.facebookLogin()"><ion-icon name="logo-facebook"></ion-icon> Facebook</button>
+      <button ion-button block icon-left color="google" tappable (click)="loginProvider.googleLogin()"><ion-icon name="logo-google"></ion-icon> Google+</button>-->
+  </ion-list>
+</ion-content>
